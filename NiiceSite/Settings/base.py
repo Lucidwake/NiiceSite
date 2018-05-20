@@ -14,7 +14,7 @@ import os
 from django.core.exceptions import ImproperlyConfigured
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
 # Quick-start development settings - unsuitable for production
@@ -30,7 +30,7 @@ def get_env_variable(var_name):
 
 SECRET_KEY = get_env_variable('SECRET_KEY')
 
-ALLOWED_HOSTS = ['www.niicesolutions.com','localhost']
+ALLOWED_HOSTS = ["www.niicesolutions.com", "localhost", "127.0.0.1"]
 
 
 # Application definition
@@ -60,7 +60,7 @@ ROOT_URLCONF = 'NiiceSite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, '../../../templates')],
+        'DIRS': [os.path.join(BASE_DIR, '../../templates'),os.path.join(BASE_DIR, '../templates'),os.path.join(BASE_DIR, '../templates/niicesite')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -126,3 +126,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "../static"),
+)
