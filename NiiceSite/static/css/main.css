@@ -10,7 +10,7 @@
    Base styles: opinionated defaults
    ========================================================================== */
 
-.jumbotron h1 {
+h1.jumbotron {
     color: rgba(200, 50, 255, 1);
 }
 

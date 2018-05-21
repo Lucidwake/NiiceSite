@@ -60,7 +60,7 @@ ROOT_URLCONF = 'NiiceSite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, '../../templates'),os.path.join(BASE_DIR, '../templates'),os.path.join(BASE_DIR, '../templates/niicesite')],
+        'DIRS': [os.path.join(BASE_DIR, '../../templates'), os.path.join(BASE_DIR, '../templates'),os.path.join(BASE_DIR, '../templates/niicesite')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

@@ -18,7 +18,7 @@ class HomeNewVisitorTest(StaticLiveServerTestCase):
 
     def test_home_title(self):
         self.browser.get(self.get_full_url("home"))
-        self.assertIn("Niice Site", self.browser.title)
+        self.assertIn("Niice Solutions Ltd.", self.browser.title)
 
     def test_h1_css(self):
         self.browser.get(self.get_full_url("home"))
