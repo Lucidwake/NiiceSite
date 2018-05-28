@@ -14,13 +14,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
 from django.conf.urls import url
-from .views import home, home_files
+from django.conf.urls.i18n import i18n_patterns
+from NiiceSite.views import home, home_files
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    url(r'^$', home, name='home'),
     url(r'^(?P<filename>(robots.txt)|(humans.txt))$',
         home_files, name='home-files'),
 ]
+
+urlpatterns += i18n_patterns(
+    url(r'^$', home, name='home'),
+    url(r'^admin/', admin.site.urls),
+)
