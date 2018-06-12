@@ -4,19 +4,17 @@ from .base import *
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-SECRET_KEY = get_env_variable('SECRET_KEY')
-
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
+SECRET_KEY='=^4f+np958+$^73-ogoyq4na)glt9(ved!*6kz+zc9tqp=tb*c'
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': get_env_variable('DATABASE_NAME'),
-        'USER': get_env_variable('DATABASE_USER'),
-        'PASSWORD': get_env_variable('DATABASE_PASSWORD'),
-        'HOST': get_env_variable('DATABASE_HOST'),
-        'PORT': get_env_variable('DATABASE_PORT'),
+        'NAME': 'niicesite_dev_db',
+        'USER': 'niicesite',
+        'PASSWORD': '3Ngl3f13ldh4v3n',
+        'HOST':'',
+        'PORT':'',
     }
 }
