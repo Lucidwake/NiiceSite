@@ -27,3 +27,4 @@ MEDIA_URL = '/media/'
 STATIC_ROOT = u'/home/stevecrooke/NiiceSite/static'
 STATIC_URL = '/static/'
 SECURE_SSL_REDIRECT = True
+SITE_ID = 2
