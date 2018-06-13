@@ -148,7 +148,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'NiiceSite/static')
+STATIC_ROOT = os.path.join(BASE_DIR, os.path.abspath('NiiceSite/static'))
+print(STATIC_ROOT)
 
 FIXTURE_DIRS = (
     os.path.join(BASE_DIR, 'fixtures'),
