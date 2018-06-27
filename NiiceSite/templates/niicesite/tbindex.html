@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load l10n %}
+{% load tz %}
+
+{% block head_title %}Niice Solutions Ltd.{% endblock %}
+{% block navbar %}
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar">lo</span>
+            <span class="icon-bar">lo</span>
+            <span class="icon-bar">lo</span>
+          </button>
+          <a class="navbar-brand" href="#">Niice Solutions</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <div class="navbar-collapse collapse">
+              <div class="navbar-form navbar-right">
+                {% if user.is_authenticated %}
+                  <a id="logout" href="/accounts/logout" class="btn btn-success">Logout</a>
+                {% else %}
+                  <a id="google_login" href="/accounts/google/login" class="btn btn-success">
+                    Sign in with Google
+                  </a>
+                {% endif %}
+              </div>
+            </div><!--/.navbar-collapse -->
+        </div><!--/.navbar-collapse -->
+
+    </nav>
+{% endblock %}
+{% block content %}
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron">
+
+      <div class="container-fluid" align="center"> <img style="height: 100%" src="/static/img/niicelogo.png"></div>
+    <div class="container" ><h1 align="center">{% trans "Welcome!"%}</h1>
+        <p>{% blocktrans %}Niice Solutions provide high quality software solutions to the manufacturing industry. </br> With more than 20 years software engineering experience in manufacturing environments, we understand your business! <br>For further information email mailto:steve@niicesolutions.com {% endblocktrans %}</p>
+        <p><a class="btn btn-primary btn-lg hidden" role="button">Learn more &raquo;</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container hidden">
+    <!-- Example row of columns -->
+
+      <div class="col-md-4">
+            <h2 id="local-date">{{today}}</h2>
+            <p>This is the time using your local information </p>
+            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+      </div>
+      <div class="col-md-4">
+            <h2 id="non-local-date">{{today|unlocalize}}</h2>
+            <p>This is the default time format.</p>
+            <p><a class="btn btn-default hidden" href="#" role="button">View details &raquo;</a></p>
+      </div>
+      <div class="col-md-4">
+          <h2>Time Zones</h2>
+          <p> Barcelona: <span id="time-tz">{{now|time:"H:i"}}</span></p>
+          <p> UTC: <span id="time-utc">{{now|utc|time:"H:i"}}</span></p>
+          <p> New York: <span id="time-ny">
+                 {{now|timezone:"America/New_York"|time:"H:i"}}</span></p>
+          <p><a class="btn btn-default hidden" href="#" role="button">View details &raquo;</a></p>
+      </div>
+    </div>
+  </div> <!-- /container -->
+{% endblock %}

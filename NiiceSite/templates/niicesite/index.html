@@ -3,7 +3,7 @@
 {% load l10n %}
 {% load tz %}
 
-{% block head_title %}Niice Solutions Ltd.{% endblock %}
+{% block head_title %}Niice Solutions{% endblock %}
 {% block navbar %}
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 
@@ -19,14 +19,8 @@
         <div id="navbar" class="navbar-collapse collapse">
             <div class="navbar-collapse collapse">
               <div class="navbar-form navbar-right">
-                {% if user.is_authenticated %}
-                  <a id="logout" href="/accounts/logout" class="btn btn-success">Logout</a>
-                {% else %}
-                  <a id="google_login" href="/accounts/google/login" class="btn btn-success">
-                    Sign in with Google
-                  </a>
-                {% endif %}
               </div>
+
             </div><!--/.navbar-collapse -->
         </div><!--/.navbar-collapse -->
 
@@ -35,34 +29,12 @@
 {% block content %}
   <!-- Main jumbotron for a primary marketing message or call to action -->
   <div class="jumbotron">
-    <div class="container"><h1>{% trans "Welcome to Niice Solutions!"%}</h1>
-        <p>{% blocktrans %}Niice Solutions provide high quality bespoke software solutions to the manufacturing industry. </br> With more than 20 years of software engineering experience, we pride ourselves on delivering high quality solutions to any vitually situation! </br></br> {% endblocktrans %}</p>
-        <p><a class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p>
+
+      <div class="container-fluid" align="center"> <img style="height: 100%" src="/static/img/niicelogo.png"></div>
+    <div class="container" ><h1 align="center">{% trans "Welcome!"%}</h1>
+        <p>{% blocktrans %}Niice Solutions provide high quality software solutions to the manufacturing industry. </br> With more than 20 years software engineering experience in manufacturing environments all over the world, we understand your business! <br>For further information email:<a href="mailto:steve@niicesolutions.com">steve@niicesolutions.com</a> or call +44(0)7447 524701{% endblocktrans %}</p>
       </div>
     </div>
   </div>
 
-  <div class="container">
-    <!-- Example row of columns -->
-
-      <div class="col-md-4">
-            <h2 id="local-date">{{today}}</h2>
-            <p>This is the time using your local information </p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-      </div>
-      <div class="col-md-4">
-            <h2 id="non-local-date">{{today|unlocalize}}</h2>
-            <p>This is the default time format.</p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-      </div>
-      <div class="col-md-4">
-          <h2>Time Zones</h2>
-          <p> Barcelona: <span id="time-tz">{{now|time:"H:i"}}</span></p>
-          <p> UTC: <span id="time-utc">{{now|utc|time:"H:i"}}</span></p>
-          <p> New York: <span id="time-ny">
-                 {{now|timezone:"America/New_York"|time:"H:i"}}</span></p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-      </div>
-    </div>
-  </div> <!-- /container -->
 {% endblock %}

@@ -62,6 +62,8 @@ USE_I18N = True
 LANGUAGES = (
     ('en', _('English')),
     ('ca', _('Catalan')),
+    # Simplified Chinese
+    ('zh-cn', _(u'简体中文')),
 )
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale'),
