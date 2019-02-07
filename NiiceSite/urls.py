@@ -18,17 +18,27 @@ from django.conf.urls import url,include
 from django.conf.urls.i18n import i18n_patterns
 from NiiceSite.views import home, home_files
 from django.contrib.auth import views as auth_views
+from django.contrib.auth.models import User
+from rest_framework import routers, serializers, viewsets
 
+# Serializers define the API representation.
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = User
+        fields = ('url', 'username', 'email', 'is_staff')
 
+# ViewSets define the view behavior.
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
 
-urlpatterns = [
-    url(r'^(?P<filename>(robots.txt)|(humans.txt))$',
-        home_files, name='home-files'),
-    url(r'^accounts/logout/$', auth_views.logout, {'next_page': '/'}),
-    url(r'^accounts/', include('allauth.urls')),
-]
+# Routers provide an easy way of automatically determining the URL conf.
+router = routers.DefaultRouter()
+router.register(r'users', UserViewSet)
 
-urlpatterns += i18n_patterns(
+urlpatterns = i18n_patterns(
     url(r'^$', home, name='home'),
     url(r'^admin/', admin.site.urls),
+    url(r'^', include(router.urls)),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 )
